@@ -23,6 +23,7 @@ def nyc_pigeon_organizer(data)
 #  names = data[:lives].values.flatten.sort
 #  i = 0
 #  while i < names.length do
+  pp data[:color]
     data[:color].reduce(new) do |memo, (k, v)|
       i = 0
       while i < v.length do
