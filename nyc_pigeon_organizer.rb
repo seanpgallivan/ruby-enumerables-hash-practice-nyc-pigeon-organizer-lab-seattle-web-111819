@@ -22,7 +22,9 @@ def nyc_pigeon_organizer(data)
   names = data[:lives].values.flatten.sort
   i = 0
   while i < names.length do
-    data[:color].reduce do |memo, (k, v)
+    data[:color].reduce({}) do |memo, (k, v)|
+      if v.include?(names[i])
+        memo[names[i]][:color] = k
     
 #    new[names[i]] = {color: [], gender: [], lives: []}
 #    new[names[i]][:color] << "purple" if data[:color][:purple].include?(names[i])
