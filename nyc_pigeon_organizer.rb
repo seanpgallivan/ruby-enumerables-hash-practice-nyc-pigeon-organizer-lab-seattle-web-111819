@@ -28,7 +28,9 @@ def nyc_pigeon_organizer(data)
       pp v
       i = 0
       while i < v.length do
-        memo[v[i]] << k.to_s
+        if !memo[v[i]]
+          memo[v[i]] << k.to_s
+        else
         i += 1
       end
       pp memo
