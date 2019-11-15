@@ -24,7 +24,7 @@ def nyc_pigeon_organizer(data)
 #  i = 0
 #  while i < names.length do
   pp data[:color]
-    data[:color].reduce(new) do |memo, (k, v)|
+    data[:color].reduce({}) do |memo, (k, v)|
       i = 0
       while i < v.length do
         memo[v[i]] << k.to_s
