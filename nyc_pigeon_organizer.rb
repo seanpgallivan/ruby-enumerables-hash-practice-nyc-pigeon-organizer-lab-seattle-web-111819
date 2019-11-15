@@ -1,3 +1,20 @@
 def nyc_pigeon_organizer(data)
-  # write your code here!
+  new = {}
+  names = data[:lives].values.flatten.sort
+  i = 0
+  while i < names.length do
+    new[names[i]] = {color: [], gender: [], lives[]}
+    new[names[i]][:color] << "purple" if data[:color][:purple].include?(names[i])
+    new[names[i]][:color] << "grey" if data[:color][:grey].include?(names[i])
+    new[names[i]][:color] << "white" if data[:color][:white].include?(names[i])
+    new[names[i]][:color] << "brown" if data[:color][:brown].include?(names[i])
+    new[names[i]][:gender] << "male" if data[:gender][:male].include?(names[i])
+    new[names[i]][:gender] << "female" if data[:gender][:female].include?(names[i])
+    new[names[i]][:lives] << "Subway" if data[:lives]["Subway"].include?(names[i])
+    new[names[i]][:lives] << "Central Park" if data[:lives]["Central Park"].include?(names[i])
+    new[names[i]][:lives] << "Library" if data[:lives]["Library"].include?(names[i])
+    new[names[i]][:lives] << "City Hall" if data[:lives]["City Hall"].include?(names[i])
+    i += 1
+  end
+  new
 end
