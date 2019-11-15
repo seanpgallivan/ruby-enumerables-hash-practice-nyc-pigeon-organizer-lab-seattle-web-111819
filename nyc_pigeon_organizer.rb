@@ -1,30 +1,42 @@
-#pigeon_data = {
-#    :purple => ["Theo", "Peter Jr.", "Lucky"],
-#    :grey => ["Theo", "Peter Jr.", "Ms. K"],
-#    :white => ["Queenie", "Andrew", "Ms. K", "Alex"],
-#    :brown => ["Queenie", "Alex"]
-#  },
-#  :gender => {
-#    :male => ["Alex", "Theo", "Peter Jr.", "Andrew", "Lucky"],
-#    :female => ["Queenie", "Ms. K"]
-#  },
-#  :lives => {
-#    "Subway" => ["Theo", "Queenie"],
-#    "Central Park" => ["Alex", "Ms. K", "Lucky"],
-#    "Library" => ["Peter Jr."],
-#    "City Hall" => ["Andrew"]
-#  }
-#}
+pigeon_data = {
+  :color => {
+    :purple => ["Theo", "Peter Jr.", "Lucky"],
+    :grey => ["Theo", "Peter Jr.", "Ms. K"],
+    :white => ["Queenie", "Andrew", "Ms. K", "Alex"],
+    :brown => ["Queenie", "Alex"]
+  },
+  :gender => {
+    :male => ["Alex", "Theo", "Peter Jr.", "Andrew", "Lucky"],
+    :female => ["Queenie", "Ms. K"]
+  },
+  :lives => {
+    "Subway" => ["Theo", "Queenie"],
+    "Central Park" => ["Alex", "Ms. K", "Lucky"],
+    "Library" => ["Peter Jr."],
+    "City Hall" => ["Andrew"]
+  }
+}
 
 
 def nyc_pigeon_organizer(data)
   new = {}
-  names = data[:lives].values.flatten.sort
-  i = 0
-  while i < names.length do
-    data[:color].reduce({}) do |memo, (k, v)|
-      if v.include?(names[i])
-        memo[names[i]][:color] = k
+#  names = data[:lives].values.flatten.sort
+#  i = 0
+#  while i < names.length do
+    data[:color].reduce(new) do |memo, (k, v)|
+      i = 0
+      while i < v.length do
+        memo[v[i]] << k.to_s
+        i += 1
+      end
+      memo
+    end
+  pp new
+end
+nyc_pigeon_organizer(pigeon_data)
+
+#      if v.include?(names[i])
+#        memo[names[i]][:color] = k.to_s
     
 #    new[names[i]] = {color: [], gender: [], lives: []}
 #    new[names[i]][:color] << "purple" if data[:color][:purple].include?(names[i])
@@ -37,7 +49,7 @@ def nyc_pigeon_organizer(data)
 #    new[names[i]][:lives] << "Central Park" if data[:lives]["Central Park"].include?(names[i])
 #    new[names[i]][:lives] << "Library" if data[:lives]["Library"].include?(names[i])
 #    new[names[i]][:lives] << "City Hall" if data[:lives]["City Hall"].include?(names[i])
-    i += 1
-  end
-  new
-end
+#    i += 1
+#  end
+#  new
+#end
