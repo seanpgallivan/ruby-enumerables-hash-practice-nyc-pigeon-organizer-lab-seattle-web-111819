@@ -23,8 +23,8 @@ def nyc_pigeon_organizer(data)
   data[:color].reduce(new) do |memo, (k, v)|
     i = 0
     while i < v.length do
-      memo[v[i]] = {} if !memo[v[i]]
-      memo[v[i]][:color] = [] if !memo[v[i]][:color]
+      memo[v[i]] = {color: [], gender: [], lives: []} if !memo[v[i]]
+#      memo[v[i]][:color] = [] if !memo[v[i]][:color]
       memo[v[i]][:color] << k.to_s
       i += 1
     end
